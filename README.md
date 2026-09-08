@@ -1,6 +1,6 @@
 # AAPDA — AI-Based Smart Logistics & Accessibility Intelligence Platform for NER
 
-**Team 4 Bits · SIH 2026 · Problem Statement PS 26002**
+**Team 4 Bits**
 
 A full-stack disruption-aware logistics platform for the North Eastern Region: it fuses
 disaster alerts, GIS hazard mapping, AI-scored routing, live GPS tracking, and offline-capable
