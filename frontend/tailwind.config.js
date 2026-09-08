@@ -1,0 +1,53 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    extend: {
+      colors: {
+        bg: '#0c1520',
+        bgAlt: '#0f1c29',
+        panel: '#142331',
+        panel2: '#182a3b',
+        line: '#24384a',
+        textDim: '#93a6b7',
+        amber: '#f2a93b',
+        amberDim: '#4a3a1c',
+        teal: '#35c3b6',
+        tealDim: '#123634',
+        red: '#ef5b4e',
+        redDim: '#3d1f1c',
+        olive: '#7fae7a',
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        hi: ['"Noto Sans Devanagari"', '"Space Grotesk"', 'sans-serif'],
+      },
+      keyframes: {
+        fadeSlideUp: { from: { opacity: 0, transform: 'translateY(14px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+        fadeSlideRight: { from: { opacity: 0, transform: 'translateX(-8px)' }, to: { opacity: 1, transform: 'translateX(0)' } },
+        viewIn: { from: { opacity: 0, transform: 'translateY(8px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+        pulseRing: { '0%': { boxShadow: '0 0 0 0 rgba(239,91,78,.45)' }, '70%': { boxShadow: '0 0 0 9px rgba(239,91,78,0)' }, '100%': { boxShadow: '0 0 0 0 rgba(239,91,78,0)' } },
+        pulseRingSoft: { '0%': { boxShadow: '0 0 0 0 rgba(127,174,122,.35)' }, '70%': { boxShadow: '0 0 0 7px rgba(127,174,122,0)' }, '100%': { boxShadow: '0 0 0 0 rgba(127,174,122,0)' } },
+        popIn: { from: { opacity: 0, transform: 'scale(.9) translateY(6px)' }, to: { opacity: 1, transform: 'scale(1) translateY(0)' } },
+        floatSlow: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+        glowSweep: { '0%': { transform: 'translateX(-30%)' }, '100%': { transform: 'translateX(130%)' } },
+        dotBlink: { '0%,80%,100%': { opacity: .25, transform: 'scale(.8)' }, '40%': { opacity: 1, transform: 'scale(1)' } },
+        spin: { to: { transform: 'rotate(360deg)' } },
+      },
+      animation: {
+        fadeSlideUp: 'fadeSlideUp .5s cubic-bezier(.2,.8,.2,1) both',
+        fadeSlideRight: 'fadeSlideRight .45s ease both',
+        viewIn: 'viewIn .4s cubic-bezier(.2,.8,.2,1) both',
+        pulseRing: 'pulseRing 1.8s infinite',
+        pulseRingSoft: 'pulseRingSoft 2.2s infinite',
+        popIn: 'popIn .3s cubic-bezier(.3,1.4,.4,1) both',
+        floatSlow: 'floatSlow 6s ease-in-out infinite',
+        glowSweep: 'glowSweep 5s linear infinite',
+        dotBlink: 'dotBlink 1.2s infinite',
+        spin: 'spin .6s linear infinite',
+      },
+    },
+  },
+  plugins: [],
+}

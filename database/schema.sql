@@ -1,0 +1,52 @@
+-- AAPDA database schema (PostgreSQL)
+
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(160) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(30) NOT NULL DEFAULT 'operator', -- operator | admin | field_agent
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS alerts (
+  id SERIAL PRIMARY KEY,
+  severity VARCHAR(10) NOT NULL,       -- high | medium | low
+  type VARCHAR(60) NOT NULL,
+  place VARCHAR(160) NOT NULL,
+  lat DOUBLE PRECISION NOT NULL,
+  lng DOUBLE PRECISION NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS vehicles (
+  id SERIAL PRIMARY KEY,
+  reg_number VARCHAR(30) UNIQUE NOT NULL,
+  driver_name VARCHAR(120),
+  lat DOUBLE PRECISION NOT NULL,
+  lng DOUBLE PRECISION NOT NULL,
+  status VARCHAR(30) NOT NULL DEFAULT 'en_route',
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS field_reports (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  type VARCHAR(60) NOT NULL,
+  description TEXT,
+  lat DOUBLE PRECISION NOT NULL,
+  lng DOUBLE PRECISION NOT NULL,
+  synced BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS route_logs (
+  id SERIAL PRIMARY KEY,
+  origin VARCHAR(80) NOT NULL,
+  destination VARCHAR(80) NOT NULL,
+  risk_score INTEGER NOT NULL,
+  distance_km INTEGER NOT NULL,
+  eta_hours NUMERIC(5,2) NOT NULL,
+  recommendation VARCHAR(160),
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
