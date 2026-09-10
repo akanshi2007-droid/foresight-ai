@@ -1,63 +1,243 @@
-# AAPDA — AI-Based Smart Logistics & Accessibility Intelligence Platform for NER
+# ForeSight AI — AI-Powered Safety & Early Warning Intelligence Platform
 
 **Team 4 Bits**
 
-A full-stack disruption-aware logistics platform for the North Eastern Region: it fuses
-disaster alerts, GIS hazard mapping, AI-scored routing, live GPS tracking, and offline-capable
-field reporting into one command-center dashboard, with a bilingual (English/Hindi) interface
-and an in-app assistant.
+> **THE MOMENT BEFORE CRITICAL**
+> See the risk. Act before it becomes danger.
 
-## Architecture
+ForeSight AI is an AI-powered **safety and early-warning platform for the North Eastern Region (NER)** designed to identify subtle signals that can precede critical incidents such as **landslides, road disruptions, and hazardous route conditions**.
 
+Instead of reacting after a disaster occurs, ForeSight AI focuses on detecting when a normal or unusual situation is **escalating toward danger**.
+
+The platform combines **GIS hazard mapping, AI-based risk scoring, safety alerts, route intelligence, GPS tracking, and field reporting** into a unified safety command center.
+
+---
+
+## 🚨 The Problem — The Moment Before Critical
+
+Critical incidents rarely begin with one obvious warning.
+
+A landslide-prone route may initially show only individual signs:
+
+* Increasing rainfall
+* Changing environmental conditions
+* Terrain susceptibility
+* Road disruptions
+* Abnormal operational patterns
+
+Individually, these signals may appear manageable.
+
+But when multiple signals begin to converge, the situation can rapidly become dangerous.
+
+### The Core Challenge
+
+> **Distinguish normal abnormality from dangerous abnormality.**
+
+ForeSight AI is designed around this transition:
+
+**NORMAL → UNUSUAL → ESCALATING → CRITICAL**
+
+---
+
+## 💡 Our Solution
+
+ForeSight AI acts as an **AI safety intelligence layer** that evaluates available hazard and operational signals to determine the current level of risk.
+
+### The platform provides:
+
+* 🛰️ Hazard and operational signal monitoring
+* ⛰️ Landslide-risk and hazard-zone identification
+* 🤖 Explainable AI risk scoring
+* 🗺️ Interactive GIS safety map
+* 🚨 Severity-based safety alerts
+* 🚚 Field vehicle tracking
+* 📍 Offline-capable field reporting
+* 📊 Safety analytics and decision support
+* 🌐 English and Hindi support
+
+---
+
+## 🧠 From Abnormal to Dangerous
+
+The core intelligence of ForeSight AI is **signal convergence**.
+
+```text
+Environmental Signal
+        +
+Terrain / Hazard Signal
+        +
+Operational Signal
+        +
+Historical Risk
+        ↓
+   AI Risk Analysis
+        ↓
+ ┌───────────────────┐
+ │ NORMAL            │
+ │ MONITOR           │
+ │ ESCALATING        │
+ │ CRITICAL          │
+ └───────────────────┘
+        ↓
+   SAFETY ACTION
 ```
-┌─────────────────┐      ┌──────────────────────┐      ┌───────────────────────┐
-│  React + Vite    │ ───▶ │  Node.js + Express    │ ───▶ │  Python + FastAPI      │
-│  + Tailwind CSS  │◀──── │  (auth, CRUD, proxy)  │◀──── │  ML risk-scoring       │
-│  Frontend :5173  │      │  Backend :8000        │      │  service :8001         │
-└─────────────────┘      └──────────┬───────────┘      └───────────────────────┘
-                                     │
-                                     ▼
-                          ┌──────────────────────┐
-                          │  PostgreSQL           │
-                          │  (or DEMO_MODE=true   │
-                          │   in-memory data)      │
-                          └──────────────────────┘
+
+A single unusual signal does not automatically indicate a critical incident.
+
+The system becomes more concerned when **multiple risk indicators converge**.
+
+---
+
+## 🗺️ Safety Intelligence Dashboard
+
+The ForeSight AI command center brings critical information together in one interface:
+
+* Live GIS hazard map
+* Risk zones
+* Vehicle positions
+* Route safety information
+* Smart alerts
+* Field reports
+* Analytics
+* AI-assisted decision support
+
+> **See the warning before it becomes an emergency.**
+
+---
+
+## 🤖 Explainable AI Risk Engine
+
+The ML service currently uses an **explainable weighted-feature risk model** to calculate route disruption risk.
+
+The model is designed to remain transparent so safety operators can understand why a route has been flagged.
+
+```text
+Hazard Conditions
+       ↓
+Risk Features
+       ↓
+Weighted Risk Model
+       ↓
+Risk Score
+       ↓
+Safety Recommendation
 ```
 
-- **Frontend** — React 18 + Vite + Tailwind CSS. Landing page, JWT-authenticated login, and a
-  dashboard with a live GIS map (Leaflet), AI route optimizer, smart alerts, offline-capable
-  field reporting, analytics, and a bilingual rule-based chatbot.
-- **Backend (Node/Express)** — owns authentication (JWT + bcrypt), alerts, vehicles, field
-  reports, and analytics. Proxies route-optimization requests to the ML service and logs the
-  result.
-- **ML service (Python/FastAPI)** — an explainable, weighted-feature risk model
-  (`ml-service/risk_model.py`) that scores route disruption risk. Swap it for a trained
-  scikit-learn model later without changing any other part of the stack.
-- **Database** — PostgreSQL schema in `database/schema.sql`, seed data in `database/seed.sql`.
-  For a zero-setup hackathon demo, the backend also has a `DEMO_MODE` that runs entirely on
-  in-memory mock data — no database required.
+The current model can later be replaced with a trained machine-learning model without changing the rest of the platform architecture.
 
-## Quick start (demo mode — no PostgreSQL needed)
+---
 
-Open **three terminals** in VS Code (`` Ctrl+` `` → split):
+## 🏗️ Architecture
 
-**Terminal 1 — ML service**
+```text
+┌─────────────────────┐
+│    React + Vite     │
+│    Tailwind CSS     │
+│                     │
+│ Safety Dashboard    │
+│ GIS Map             │
+│ Alerts              │
+│ Route Intelligence  │
+│ Field Reports       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Node.js + Express   │
+│                     │
+│ Authentication      │
+│ Alerts              │
+│ Vehicles            │
+│ Reports             │
+│ Analytics           │
+│ API Proxy           │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Python + FastAPI    │
+│                     │
+│ AI Risk Scoring     │
+│ Geospatial Logic    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│     PostgreSQL      │
+│                     │
+│ Users               │
+│ Alerts              │
+│ Vehicles            │
+│ Reports             │
+│ Analytics           │
+└─────────────────────┘
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React 18
+* Vite
+* Tailwind CSS
+* Leaflet
+* JavaScript
+
+### Backend
+
+* Node.js
+* Express
+* JWT Authentication
+* bcrypt
+
+### AI / ML
+
+* Python
+* FastAPI
+* Explainable weighted-feature risk model
+* Future trained ML integration
+
+### Database
+
+* PostgreSQL
+
+### Offline Capability
+
+* Browser `localStorage`
+* Automatic report synchronization
+
+---
+
+## ⚡ Quick Start
+
+ForeSight AI can run in `DEMO_MODE` without PostgreSQL for a quick hackathon demonstration.
+
+### Terminal 1 — ML Service
+
 ```bash
 cd ml-service
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8001
 ```
 
-**Terminal 2 — Backend**
+### Terminal 2 — Backend
+
 ```bash
 cd backend
-cp .env.example .env      # DEMO_MODE=true by default — no DB needed
+cp .env.example .env
 npm install
 npm run dev
 ```
 
-**Terminal 3 — Frontend**
+### Terminal 3 — Frontend
+
 ```bash
 cd frontend
 cp .env.example .env
@@ -65,104 +245,119 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:5173** — you'll land on the marketing page. Click **Launch Dashboard**
-and log in with:
+Open:
 
+```text
+http://localhost:5173
 ```
-Email:    admin@aapda.in
+
+Then select **Launch Dashboard**.
+
+### Demo Login
+
+```text
+Email: admin@aapda.in
 Password: aapda123
 ```
 
-## Running with real PostgreSQL
+---
 
-1. Create a database and load the schema + seed data:
-   ```bash
-   createdb aapda
-   psql aapda -f database/schema.sql
-   psql aapda -f database/seed.sql
-   ```
-2. In `backend/.env`, set:
-   ```
-   DEMO_MODE=false
-   DATABASE_URL=postgresql://<user>:<password>@localhost:5432/aapda
-   ```
-3. Restart the backend (`npm run dev`). Registration (`POST /api/auth/register`) is only
-   enabled outside demo mode.
+## 🗄️ PostgreSQL Setup
 
-## What's mocked vs. real right now
+Create the database:
 
-| Feature | Status |
-|---|---|
-| Auth (JWT + bcrypt), login | **Real** |
-| Alerts, vehicles, field reports API | Real endpoints; demo data unless PostgreSQL is configured |
-| AI route risk scoring | Real, explainable weighted model in `ml-service/risk_model.py` — swap in a trained model when you have historical disruption data |
-| GPS vehicle movement | Simulated jitter on the backend (stand-in for a live GPS feed) |
-| Offline field reporting | **Real** — reports queue in `localStorage` when offline and auto-sync when the "Simulate offline" toggle is switched back on |
-| Chatbot | Rule-based keyword matcher (client-side) — swap for a real LLM call by replacing `Chatbot.jsx`'s `botReply()` |
-| Weather/IMD/Bhuvan/DEM data feeds | Not yet wired — `ml-service/data.py` has a placeholder `HAZARD_BIAS` map to replace with real feeds |
-
-## Project layout
-
-```
-aapda-full/
-├── database/
-│   ├── schema.sql        # PostgreSQL tables
-│   └── seed.sql          # Demo user + alerts + vehicles
-├── backend/               # Node.js + Express
-│   ├── src/
-│   │   ├── server.js      # entrypoint
-│   │   ├── db.js          # Postgres pool / DEMO_MODE switch
-│   │   ├── demoStore.js   # in-memory data for DEMO_MODE
-│   │   ├── middleware/auth.js
-│   │   └── routes/        # auth, alerts, vehicles, reports, route, analytics
-│   └── .env.example
-├── ml-service/            # Python + FastAPI
-│   ├── main.py            # /optimize, /towns
-│   ├── risk_model.py      # explainable weighted risk model
-│   └── data.py            # towns + mock hazard bias
-└── frontend/              # React + Vite + Tailwind
-    └── src/
-        ├── pages/          # Landing, Login, Dashboard, Overview, Analytics
-        ├── components/     # Sidebar, MapView, RouteOptimizer, AlertsPanel,
-        │                   # FieldReports, Chatbot, StatCard, Logo
-        ├── auth/AuthContext.jsx
-        ├── api.js
-        └── i18n.js
+```bash
+createdb aapda
 ```
 
-## API reference (backend, port 8000)
+Load the schema:
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| POST | `/api/auth/login` | — | Returns `{ token, user }` |
-| POST | `/api/auth/register` | — | Disabled in DEMO_MODE |
-| GET | `/api/alerts?severity=high` | — | List alerts, optional severity filter |
-| GET | `/api/vehicles` | — | Live vehicle positions |
-| GET | `/api/route/towns` | — | Town → lat/lng lookup (proxied from ML service) |
-| POST | `/api/route/optimize` | — | `{ origin, destination }` → risk score + path |
-| GET | `/api/reports` | ✅ | List field reports |
-| POST | `/api/reports` | ✅ | Submit a field report |
-| GET | `/api/analytics/summary` | ✅ | Aggregate stats for the Analytics page |
+```bash
+psql aapda -f database/schema.sql
+```
 
-## Demo script for the jury
+Load the demo data:
 
-1. **Landing page** — walk through the problem statement, features, and architecture sections.
-2. **Login** — show the JWT-based auth.
-3. **Overview** — live counts pulled from the backend.
-4. **Live GIS Map** — hazard markers + moving vehicle markers (simulated GPS).
-5. **Route Optimizer** — pick two towns, show the AI-scored safe route animate in against the
-   blocked path, and explain the risk model is a transparent weighted-feature score (easy to
-   defend under jury questioning, and swappable for a trained model later).
-6. **Smart Alerts** — filter by severity.
-7. **Field Reports** — flip "Simulate offline," submit a report, show it queue locally, flip
-   back online, watch it auto-sync.
-8. **Analytics** — aggregate view for decision-makers.
-9. **Chatbot** — ask it about hazard reporting, alerts, or the helpline number, in English and
-   Hindi.
+```bash
+psql aapda -f database/seed.sql
+```
 
-## Notes
+Configure:
 
-- CORS is fully open (`origins: '*'`) for hackathon-demo simplicity — restrict this to your
-  real frontend domain before any production deployment.
-- `JWT_SECRET` in `.env.example` is a placeholder — generate a real random string for any
-  non-demo deployment.
+```env
+DEMO_MODE=false
+DATABASE_URL=postgresql://<user>:<password>@localhost:5432/aapda
+```
+
+Restart the backend.
+
+---
+
+## 📊 Current Implementation
+
+| Feature                            | Status                |
+| ---------------------------------- | --------------------- |
+| JWT Authentication                 | ✅ Real                |
+| Safety Alerts API                  | ✅ Real                |
+| Vehicle API                        | ✅ Real                |
+| Field Reports API                  | ✅ Real                |
+| AI Route Risk Scoring              | ✅ Real                |
+| GIS Map                            | ✅ Implemented         |
+| Offline Field Reporting            | ✅ Real                |
+| Vehicle GPS                        | 🟡 Simulated          |
+| Chatbot                            | 🟡 Rule-based         |
+| Weather / IMD / Bhuvan / DEM feeds | 🔴 Not yet wired      |
+| Trained historical ML model        | 🔴 Future enhancement |
+
+---
+
+## 🎬 Hackathon Demo Flow
+
+1. **Landing Page** — Introduce **The Moment Before Critical**.
+2. **Login** — Demonstrate authentication.
+3. **Safety Overview** — Show current risk levels and alerts.
+4. **Live GIS Map** — Display hazard zones and vehicle locations.
+5. **AI Route Intelligence** — Compare route risk and identify safer routes.
+6. **Smart Alerts** — Filter and investigate safety alerts.
+7. **Offline Field Reporting** — Demonstrate reporting during connectivity loss.
+8. **Analytics** — Show safety intelligence for decision-makers.
+9. **AI Assistant** — Interact with the safety assistant in English/Hindi.
+
+---
+
+## 🔮 Future Scope
+
+ForeSight AI can be extended with:
+
+* Real-time rainfall and weather feeds
+* Soil-moisture data
+* DEM and slope analysis
+* Satellite imagery
+* Historical landslide datasets
+* IoT sensor streams
+* Trained landslide-risk models
+* Advanced anomaly detection
+* Real GPS feeds
+* Regional-language support
+* Automated emergency escalation
+
+These integrations would strengthen ForeSight AI's ability to identify **the transition from an unusual condition to a genuinely dangerous situation**.
+
+---
+
+## 🎯 Our Vision
+
+Most disaster systems focus on what happens **after** a critical event.
+
+**ForeSight AI focuses on what happens before it.**
+
+> **Detect the signal.**
+> **Understand the escalation.**
+> **Warn before critical.**
+> **Act before danger.**
+
+# **ForeSight AI**
+
+### *See the risk. Act before it becomes danger.*
+
+**Team 4 Bits**
